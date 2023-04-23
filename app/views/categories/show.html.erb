@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @category %>
+<div class="float-end">
+  <%= link_to "Edit category", edit_category_path(@category) %><br>
+  <%= link_to "Back to categories", categories_path, class: "text-secondary" %>
+  <%= button_to "Destroy this category", @category, method: :delete, class: "m-0 p-0 btn btn-link text-decoration-none text-danger" %>
+</div>

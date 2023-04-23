@@ -1,0 +1,40 @@
+<div class="card p-5 shadow col-6">
+  <%= form_with(model: product) do |form| %>
+
+    <% if product.errors.any? %>
+      <p><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved</p>
+      <% product.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :price, class: "form-label" %>
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :url, class: "form-label" %>
+      <%= form.text_field :url, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :purchased, class: "form-label" %>
+      <%= form.check_box :purchased, class: "form-control" %>
+    </div>
+
+    <div>
+      <%= form.label :category_id, class: "form-label" %>
+      <%= form.text_field :category_id, class: "form-control" %>
+    </div>
+
+    <div class="mt-3">
+      <%= form.submit class: "btn btn-sm btn-success" %>
+    </div>
+  <% end %>
+</div>

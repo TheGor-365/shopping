@@ -1,0 +1,20 @@
+<div class="card p-5 shadow col-6">
+  <%= form_with(model: category) do |form| %>
+
+    <% if category.errors.any? %>
+      <p><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved</p>
+      <% category.errors.each do |error| %>
+        <p><%= error.full_message %></p>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="mt-5">
+      <%= form.submit class: "btn btn-sm btn-success" %>
+    </div>
+  <% end %>
+</div>

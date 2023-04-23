@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center mb-5">
+  Categories
+</h1>
+
+<% @categories.each do |category| %>
+  <%= render category %>
+  <p><%= link_to "Show category", category %></p>
+<% end %>
+
+<h6 class="p-3 shadow bg-light my-5">
+  <%= link_to "Create Category", new_category_path, class: "text-success text-center" %>
+</h6>

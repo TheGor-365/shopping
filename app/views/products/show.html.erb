@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @product %>
+<div class="float-end">
+  <%= link_to "Edit product", edit_product_path(@product) %><br>
+  <%= link_to "Back to products", products_path, class: "text-secondary" %>
+  <%= button_to "Destroy this product", @product, method: :delete, class: "m-0 p-0 btn btn-link text-decoration-none text-danger" %>
+</div>

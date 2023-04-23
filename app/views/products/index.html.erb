@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center mb-5">
+  Products
+</h1>
+
+<% @products.each do |product| %>
+  <%= render product %>
+  <p><%= link_to "Show product", product %></p>
+<% end %>
+
+<div class="p-3 shadow bg-light my-5 text-center">
+  <%= link_to "Create Product", new_product_path, class: "text-success" %>
+</div>

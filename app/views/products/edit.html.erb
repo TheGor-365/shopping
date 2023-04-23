@@ -1,0 +1,10 @@
+<h1 class="text-center mb-5">
+  Editing product
+</h1>
+
+<%= render "form", product: @product %>
+<br>
+<div class="float-end">
+  <%= link_to "Show product", @product, class: "text-success" %>
+  <%= link_to "Back to products", products_path, class: "text-secondary" %>
+</div>
