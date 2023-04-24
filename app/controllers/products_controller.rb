@@ -40,6 +40,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def inline_update
+    @product = Product.find(params[:id])
+
+    if @product.update(product_params)
+      render json: { status: 'success', message: 'Product updated' }
+    else
+      render json: { status: 'error', message: 'Product update failed' }
+    end
+  end
+
   private
   def set_product
     @product = Product.find(params[:id])

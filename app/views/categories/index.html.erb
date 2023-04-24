@@ -49,6 +49,14 @@
           <td>
             <%= check_box_tag "product_#{product.id}", true, product.purchased, class: "purchased_chackbox", data: { url: inline_update_product_path(product) } %>
           </td>
+          <td
+            class="editable"
+            contenteditable="true"
+            data-model="product"
+            data-attribute="url"
+            data-url="<%= inline_update_product_path(product) %>">
+            <%= product.url %>
+          </td>
           <td>
             <%= link_to "Show Product", product, class: "text-success" %>
           </td>

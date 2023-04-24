@@ -1,16 +1,13 @@
 <div id="<%= dom_id product %>" class="card col-6 p-5 shadow">
-  <strong class="text-muted">
-    Name:
-  </strong><br>
-  <small>
+  <h5 class="text-muted text-center mb-3">
     <%= product.name %>
-  </small><hr>
+  </h5>
 
   <strong class="text-muted">
     Price:
   </strong><br>
   <small>
-    <%= product.price %>
+    $ <%= product.price %>
   </small><hr>
 
   <strong class="text-muted">
@@ -31,6 +28,6 @@
     Category:
   </strong><br>
   <small>
-    <%= product.category_id %>
+    <%= product.category.name %>
   </small>
 </div>
