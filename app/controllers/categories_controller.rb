@@ -2,7 +2,10 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
 
   def index
-    @categories = Category.all
+    @categories = Category.includes(:products)
+    @total_price = Product.sum(:price)
+    @total_purchased = Product.purchased.sum(:price)
+    @total_remaining = Product.remaining.sum(:price)
   end
 
   def show; end

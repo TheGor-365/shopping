@@ -1,14 +1,63 @@
 <p style="color: green"><%= notice %></p>
 
-<h1 class="text-center mb-5">
-  Categories
+<h1 class="border p-3 text-center bg-light">
+  Total Price:     <%= number_to_currency(@total_price) %>
 </h1>
+<h4 class="border p-3 text-center bg-light">
+  Total Purchased: <%= number_to_currency(@total_purchased) %>
+</h4>
+<h4 class="border p-3 text-center bg-light">
+  Total Remaining: <%= number_to_currency(@total_remaining) %>
+</h4>
+<br>
 
 <% @categories.each do |category| %>
-  <%= render category %>
-  <p><%= link_to "Show category", category %></p>
+  <h3 class="text-center my-2">
+    <span class="text-muted"><%= category.name %></span> - <%= number_to_currency(category.products.sum(:price)) %>
+  </h3>
+
+  <table class="table table-bordered table-primary mb-5">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Purchased</th>
+        <th>URL</th>
+        <th>Product Page</th>
+      </tr>
+    </thead>
+
+    <tbody data-controller="products">
+      <% category.products.each do |product| %>
+        <tr>
+          <td
+            class="editable"
+            contenteditable="true"
+            data-model="product"
+            data-attribute="name"
+            data-url="<%= inline_update_product_path(product) %>">
+            <%= product.name %>
+          </td>
+          <td
+            class="editable"
+            contenteditable="true"
+            data-model="product"
+            data-attribute="price"
+            data-url="<%= inline_update_product_path(product) %>">
+            <%= number_to_currency(product.price) %>
+          </td>
+          <td>
+            <%= check_box_tag "product_#{product.id}", true, product.purchased, class: "purchased_chackbox", data: { url: inline_update_product_path(product) } %>
+          </td>
+          <td>
+            <%= link_to "Show Product", product, class: "text-success" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
-<h6 class="p-3 shadow bg-light my-5">
-  <%= link_to "Create Category", new_category_path, class: "text-success text-center" %>
+<h6 class="p-3 shadow bg-light my-5 text-center">
+  <%= link_to "Create Category", new_category_path, class: "text-success" %>
 </h6>
